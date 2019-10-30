@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{pb}
+{\sc Ackland, R.}
+\newblock Mapping the us political blogsphere: Are conservative bloggers more
+  prominent?
+
+\bibitem{snapnets}
+{\sc Leskovec, J., and Krevl, A.}
+\newblock {SNAP Datasets}: {Stanford} large network dataset collection.
+\newblock \url{http://snap.stanford.edu/data}, June 2014.
+
+\bibitem{Newman_2006}
+{\sc Newman, M. E.~J.}
+\newblock Finding community structure in networks using the eigenvectors of
+  matrices.
+\newblock {\em Physical Review E 74}, 3 (Sep 2006).
+
+\bibitem{small_world}
+{\sc Watts, D.~J.}
+\newblock Collective dynamics of small-world networks.
+\newblock {\em Nature 393\/}.
+
+\end{thebibliography}
