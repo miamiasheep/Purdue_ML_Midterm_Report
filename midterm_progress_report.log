@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.28)  30 OCT 2019 00:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.28)  31 OCT 2019 23:17
 entering extended mode
 **./midterm_progress_report.tex
 (midterm_progress_report.tex
@@ -416,39 +416,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
 [1
 
 {C:/Users/jtlee/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<Facebook.png, id=137, 1110.0672pt x 554.3109pt>
+<Facebook.png, id=145, 1110.0672pt x 554.3109pt>
 File: Facebook.png Graphic file (type png)
 <use Facebook.png>
-Package pdftex.def Info: Facebook.png  used on input line 108.
+Package pdftex.def Info: Facebook.png  used on input line 110.
 (pdftex.def)             Requested size: 333.02274pt x 166.29454pt.
-<Router.png, id=139, 462.528pt x 346.896pt>
+<Router.png, id=147, 462.528pt x 346.896pt>
 File: Router.png Graphic file (type png)
 <use Router.png>
-Package pdftex.def Info: Router.png  used on input line 115.
+Package pdftex.def Info: Router.png  used on input line 117.
 (pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
-[3 <./Facebook.png> <./Router.png>] [4] [5] [6] (midterm_progress_report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 223.
+[3 <./Facebook.png>] [4 <./Router.png>] [5] [6] (midterm_progress_report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
 
 [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 223.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
  (midterm_progress_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 223.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 223.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
 Package rerunfilecheck Info: File `midterm_progress_report.out' has not changed
 .
 (rerunfilecheck)             Checksum: 97A2BAC435DABC2CD0A06A7E3D2D4BB0;1626.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 223.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
  ) 
 Here is how much of TeX's memory you used:
- 8211 strings out of 492895
- 116227 string characters out of 3133479
- 225349 words of memory out of 3000000
- 11992 multiletter control sequences out of 15000+200000
+ 8217 strings out of 492895
+ 116287 string characters out of 3133479
+ 225431 words of memory out of 3000000
+ 11995 multiletter control sequences out of 15000+200000
  13220 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,12n,32p,680b,992s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -463,9 +467,9 @@ e1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on midterm_progress_report.pdf (7 pages, 311964 bytes).
+Output written on midterm_progress_report.pdf (7 pages, 318550 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
+ 239 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
  211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

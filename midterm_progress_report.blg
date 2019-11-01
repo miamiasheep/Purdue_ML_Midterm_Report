@@ -1,6 +1,12 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: midterm_progress_report.aux
 The style file: acm.bst
 Database file #1: midterm_progress_report.bib
+Warning--string name "usair" is undefined
+--line 11 of file midterm_progress_report.bib
+I was expecting a `,' or a `}'---line 11 of file midterm_progress_report.bib
+ :  title        = usair 
+ :                       Data set,
+I'm skipping whatever remains of this entry
 Warning--empty journal in pb
 Warning--empty year in small_world
-(There were 2 warnings)
+(There was 1 error message)
