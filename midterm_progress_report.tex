@@ -26,28 +26,26 @@
 \maketitle
 
 \section{Abstract}
-Our proposal proposes that we want to perform link prediction on network structured data.
 
-In this period, we have collected data and established our evaluation framework. We implemented 6 baselines model in the 8 different data sets. Besides, we perform data analysis and visualize our data set.
-
-In the following three weeks, we will focus on implmenting factorization model and state-of-the-art methods. And try to further improve our result. 
+In our last proposal report, we planned to perform link prediction on network structured data.
+By now, we have collected data and established our evaluation framework. We implemented 6 baseline models in 8 different datasets, performed data analysis and visualized our datasets. In the following three weeks, we will be focusing on implementing factorization models and state-of-the-art methods as well as further improving our current results. 
 
 \section{How to Reproduce Our Result}
-We believe reproducibility is very important when it comes to research. So, we carefully record all of our experiment results in github.
-
-All of our result we presented in the following sections can be easily reproduced using this github repo. \\
-
+We believe that reproducibility is very important when it comes to research. Thus, we carefully recorded all of our experiment results on Github. All the results presented in the following sections can be easily reproduced using this github repository: 
+\\
+\\
 \url{https://github.com/miamiasheep/Purdue\_ML\_Course\_Project}
 \\
-If you want to reproduce all of our result (including data analysis part), you can type the following command: 
+\\
+To reproduce all of our result (including data analysis part), simply type the following commands: 
 \begin{lstlisting}
 python script.py
 \end{lstlisting}
-If you want to reproduce the result of certain data sets, you can type the following command:
+To reproduce the result of certain data sets, type the following command:
 \begin{lstlisting}
 python main.py --input [file1,file2,...] --goal [auc/f1]
 \end{lstlisting}
-If you want to draw the graph of a network, you can type the following command:
+To draw the graph of a network, type the following command:
 \begin{lstlisting}
 python main.py --input [file] --draw [N(Integer)]
 \end{lstlisting}
@@ -56,9 +54,9 @@ When N is larger, the sample network will be larger.
 \section{Data Analysis}
 
 \subsection {Data Set}
-We collect 8 different data sets and all the data sets are very unique and have different characteristics. And table \ref{tab:info} shows basic statistics of each data set.
+We collect 8 different datasets which are very unique and have different characteristics. Table \ref{tab:info} shows basic statistics of each data set.
 \subsubsection{Facebook}
-This is a data set downloaded from SNAP(Staford NEtwork Analysis Project)\cite{snapnets}. The data is an egonet in facebook. Each node represent an account in facebook and each link represents friendship in facebook.
+This is a dataset downloaded from SNAP(Staford NEtwork Analysis Project)\cite{snapnets}. The data is an egonet in facebook. Each node represents an account in Facebook and each link represents friendship in Facebook.
 \subsubsection{Power}
 Power is  an electrical grid of western US\cite{small_world}.
 \subsubsection{NS}
@@ -96,13 +94,17 @@ Celegan is a neural network of C. elegans.\cite{small_world}
 \end{center}
 \end{table}
 
-\subsection{Visualize Our Data Set}
-We also implement a tool to visualize our data sets. And all of our visualization graph can be seen in the following link: \url{https://github.com/miamiasheep/Purdue_ML_Course_Project/tree/master/graph}
-
-Because the network is too big and it is hard to find any clue if we draw all the edges and nodes, we only sample a small portion(a given set of nodes' neighbor and neighbors of the neighbor) of the network on every data set.  
-
-
-By visualizing our data sets. We can find that the characteristic of each data is actually very different. Take facebook(figure\ref{fig:facebook}) and Router(figure\ref{fig:Router}) as an example, they are very different. Facebook data set has multiple triangle in the middle of the network. On contrast, Router has no triangle in the data set.
+\subsection{Visualizing Our Data Set}
+We implemented a tool to visualize our datasets. And all of our visualization graphs can be seen in the following link:
+\\
+\\
+\url{https://github.com/miamiasheep/Purdue_ML_Course_Project/tree/master/graph}
+\\
+\\
+Since the network is too big and it is hard to find any clue regarding the network structure if we draw all the edges and nodes, we only sampled a small portion of the network on every dataset.
+\\
+\\
+By visualizing our data sets, we can see that the characteristic of each data is actually very different. Let's take Facebook (figure\ref{fig:facebook}) and Router (figure\ref{fig:Router}) as examples. Facebook dataset has multiple triangles in the middle of the network. In contrast, Router has no triangle in the data set.
 
 
 \begin{figure}[h]
@@ -121,19 +123,19 @@ By visualizing our data sets. We can find that the characteristic of each data i
 \section{Evaluation and Result}
 
 \subsection{Baselines}
-Given two nodes x and y be the node we want to predict. We let the set of neighbor x be N(x). We implemented six very common heuristics. And we organized the six heuristics in \ref{tab:method}. \\
+For the following sections, we denote x and y as two nodes, between which we want to predict if there is a link. And we denote the set of neighbors of x as N(x). We implemented six very common heuristics. And in \ref{tab:method}, we organized the formulas of the six heuristics. \\
 \subsubsection{Common Neighbors(CN)}
-It is a very simple heuristic. Two nodes have more common neighbor will be more likely to have a link. The score can represented as $|N(x) \cap N(y)|$.
+It is a very simple heuristic. The intuition is that the more common neighbors for two nodes, the more likely that there is a link between them. The score can be calculated as $|N(x) \cap N(y)|$.
 \subsubsection{Jaccard(JC)}
-It is very similar to common neighbors. If x and y are high degree nodes, it is not surprised that they will have many common neighbors. Jaccard wants to consider this effect and put the size of union of the neighbors of two nodes in denominator. It can be represented as $\frac{|N(x) \cap N(y)|}{|N(x) \cup N(y)|}$
+It is very similar to common neighbors except that Jaccard considers the fact that two higher degree nodes unsurprisingly tend to have more common nodes. Thus, if two lower degree nodes have common neighbors, maybe they really have a strong relationship. The score can be calculated as $\frac{|N(x) \cap N(y)|}{|N(x) \cup N(y)|}$
 \subsubsection{Adamic Adar(AA)}
-It is also very similar to common neighbors. Given the assumption that a low degree common neighbor have more contribution to probability that x and y having a link. We divide the weight of each common neighbor by the logarithm of its degree. It is actually very similar to a TFIDF. And we can represented Adamic Adar as $\sum_{z \in N(x) \cap N(y)}{\frac{1}{log(|N(z)|)}}$
+It is also very similar to common neighbors. It assumes that a low degree common neighbor have more contribution to the probability of a link between x and y. Thus, the score divides the weight of each common neighbor by the logarithm of its degree. It is actually very similar to TFIDF. And we can calculate the Adamic Adar by $\sum_{z \in N(x) \cap N(y)}{\frac{1}{log(|N(z)|)}}$
 \subsubsection{Total Neighbors(TN)}
-It is the most simple baseline which is just to calculate the total size of neighbors of x and y. It can be represented as $|N(x)| + |N(y)|$
+It is the simplest baseline, which is just summing up the total size of neighbors of x and y. It can be calculated as $|N(x)| + |N(y)|$
 \subsubsection{Preferential Attachment(PA)}
-Given the assumption that a high degree nodes have more chance to have link have other nodes. Preferential Attachment calculate the product of degree of x and y. It can be represented as $|N(x)| * |N(y)|$
+It is assumed that a high degree node have more chances to have a link with other nodes. Preferential Attachment calculate the product of degree of x and y. It can be calculated as $|N(x)| * |N(y)|$
 \subsubsection{Page Rank(PG)}
-It is very similar to PA. But instead of just using the degree product of nodes, it use the product of the score after performing page rank to our network. Because the product can be very small, we use the sum of logarithm instead. Let $r_x$ be the score of x after performing page rank and $r_y$ be the score of y after performing page rank. It can be represented as $\log{r_x} + \log{r_y}$
+It is very similar to PA. But instead of using the product of nodes' degrees, it uses the product of two nodes' scores derived from performing page rank on our network. Since the product can be very small, we use the sum of logarithm instead. Let $r_x$ be the score of x after performing page rank and $r_y$ be the score of y after page rank. It can be calculated as $\log{r_x} + \log{r_y}$
 \begin{table}
 	\begin{center}
 		\begin{tabular}{|c|c|}
@@ -154,17 +156,20 @@ It is very similar to PA. But instead of just using the degree product of nodes,
 \end{table}
 
 \subsection{Evaluation}
-Evaluation is not a trivial problem when it comes to link prediction problem. If we want to do all pair evaluation, it will take O($N^2$) predictions where N is the size of the nodes. And even for a small graph with 1000 nodes, the evaluation time is not trivial.
- 
-In fact, make a fair and effective evaluation is also a research topic and Ryan and Nitech has published a paper of how to evaluate link prediction problem. We choose the most common way to evaluate our model which is to do down-sampling on negative samples. 
+Evaluation is not trivial when it comes to link prediction problems. If we want to evaluate all pairs of nodes, it will take O($N^2$) prediction time, where N is the size of the nodes. And even for a small graph with 1000 nodes, the evaluation time is a lot. In fact, how to come up with a fair and effective evaluation is also a research topic. Ryan and Nitech published a paper about how to evaluate a link prediction problem. We choose the most common way to evaluate our model: Down-sampling negative samples. (By negative samples, we mean a pair of nodes with no link between them. In link prediction problems, negative samples are usually way more than positive ones.)
+\\
+\\
+First, we randomly divided our edges into training, validation and testing. The ratio is 0.8:0.1:0.1. Training set is for training while validation set is only for grid search for the best parameters. And testing set is for evaluation of our model. 
+\\
+\\
+Second, we randomly sampled negative samples for validation and testing set. The sample size is equal to the set size.
+\\
+\\
+Third, we trained the models using training set, tuned our model's parameter using validation set, applied the models to our testing set, and ranked the pairs by their scores. The higher score a pair gets, the higher the ranking it is and the more possible that there would be a link between them. For evaluation, we then used the ranking metrics. We mainly used AUC-ROC score (area under Receiver Operating Characteristics curve, abbreviated to AUC here). AUC has a very good characteristic that the sampling AUC is actually an approximation of actual AUC even if we do down-sampling. We also implemented f1@k score as an evaluation metric. For the parameter k, we tentatively set the k equal to the size of positive samples. For this k, recall is actually equal to precision. And f1@k thus has a very intuitive physical meaning: the accuracy of finding all of the missing links given the size of missing links. In the future, we'll try to set different k's and see the influence of them. 
+\\
+\\
+Also, something to note here is that some nodes may only exist in validation or testing set but not in training set. We discarded the pairs of nodes where at least one node is not in the training set when evaluating, i.e., We only considered pairs of which both nodes are in the training set.
 
-We randomly divide our edges into training, validation and testing according to the ratio 0.8:0.1:0.1. Training set is only for training, validation set is only for grid search of best parameters, and testing set is only for evaluate our model.
-
-For validation and testing we randomly sample negative samples that equal to their size. If it is unlucky enough, some nodes may only exists in validation or testing set and not exist in training set, in this case, we will discard this edges in the evaluation.
-
-To evaluate our result, we mainly use AUC score(area under Receiver Operating Characteristics). Because AUC has a very good characteristic which is the sampling AUC is actually an approximation of actual AUC even if we do down-sampling in negative data set. 
-
-However, if our model rank all positive data that higher than 90 percent of negative data but all of the positive data not the top ranked. The AUC score will be great ($>0.9$) but all of the positive data are not likely to be recommended. Therefore, we also implement f1@k score as an evaluation. For the parameter k, we temporaily set the k equal to the size of positive label. For this k, recall is actually equal to precision. And it has a very intuitive physical meaning which is "the accuracy of finding all of the missing link if we know the size of missing link". In the future, we'll try to set different k and see the influence of the k. 
 
 \section{Result and Discussion}
 \begin{table}
@@ -209,12 +214,13 @@ However, if our model rank all positive data that higher than 90 percent of nega
 	\label{tab:f1}
 \end{table}
 
-Table \ref{tab:auc} shows AUC of six different baselines and table \ref{tab:f1} shows F1 score of the six baselines. 
-
-According to the result, we can see that no heuristic method can outperform all other heuristics.  And we can see that Adamic Adar(AA), Jaccard, and common neighbors perform pretty well in facebook, NS data set. However, in power and router data set. The result of common neighbor based method are pretty bad. It is not surprised because that in power and router data set, there are few triangles and thus common neighbor might not be a good heuristic. 
+Table \ref{tab:auc} shows AUC's of the six different baselines and Table \ref{tab:f1} shows the F1 scores.
+\\
+\\
+According to the result above, we can see that no heuristic method can outperform all other heuristics on all datasets, and that Adamic Adar(AA), Jaccard, and common neighbors perform pretty well in Facebook, NS dataset. However, for Power and Router dataset, the results of common neighbor based methods are pretty bad. This is not surprising because in Power and Router dataset, there are such few triangles that the methods aren't able to achieve good performances. 
 
 \section{Future Work}
-We want to keep working on what we have proposed in our proposal. Because we already finish our evaluation framework, we can start implement our machine learning models. And the result will be included in our final report. 
+We will keep working on what we have proposed in our proposal. Since we have finished our evaluation framework, we can start implementing our machine learning models. And the final results will be included in our final report. 
 
 
 
