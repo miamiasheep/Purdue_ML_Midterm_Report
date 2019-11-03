@@ -156,7 +156,7 @@
 	\end{table}
 	
 	\subsection{Evaluation}
-	Evaluation is not trivial when it comes to link prediction problems. If we want to evaluate all pairs of nodes, it will take O($N^2$) prediction time, where N is the size of the nodes. And even for a small graph with 1000 nodes, the evaluation time is a lot. In fact, finding a fair and effective evaluation is also a research topic. Ryan and Nitech published a paper about how to evaluate a link prediction problem. We choose the most common way to evaluate our model: Down-sampling negative samples. (By negative samples, we mean a pair of nodes with no link between them. In link prediction problems, negative samples are usually way more than positive ones.)
+	Evaluation is not trivial when it comes to link prediction problems. If we want to evaluate all pairs of nodes, it will take O($N^2$) prediction time, where N is the size of the nodes. And even for a small graph with 1000 nodes, the evaluation time is a lot. In fact, finding a fair and effective evaluation is also a research topic. Ryan and Nitech published a paper \cite{eval} about how to evaluate a link prediction problem. We choose the most common way to evaluate our model: Down-sampling negative samples. (By negative samples, we mean a pair of nodes with no link between them. In link prediction problems, negative samples are usually way more than positive ones.)
 	\\
 	\\
 	First, we randomly divided our edges into training, validation and testing. The ratio is 0.8:0.1:0.1. Training set is for training while validation set is only for grid search for the best parameters. And testing set is for evaluation of our model. 
@@ -218,9 +218,22 @@
 	\\
 	\\
 	According to the result above, we can see that no heuristic method can outperform all other heuristics, and that Adamic Adar(AA), Jaccard, and common neighbors perform pretty well in the Facebook and NS dataset. However, for Power and Router dataset, the results of common neighbor based methods are pretty bad. This is not surprising because in Power and Router dataset, there are so few triangles that the methods aren't able to achieve good performances. 
+	\\
+	\\
+	To achieve a better result, we want to resort to machine learning approach in the following two weeks. Instead of designing a heuristic before actually seeing the data, we want to train our model using the existing link in the training data. The main problem of machine learning approach is to find the feature vector x for each node. We have surveyed two kinds of method in our proposal. 
+	\\
+	\\
+	The first approach is using factorization model(a.k.a Matrix Factorization) \cite{mf}. We give each node a latent feature vector and use the inner product be the probability whether the node will have the link. This method has a great performance in recommendation problem (link prediction in biparitite graph). We want to test wheter it will have the same great performance when it comes to a much more general link prediction problem. 
+	\\
+	\\
+	The second approach is to sample a set of subgraph and enumerate all the nodes in each subgraph. As a result, the adjacency matrix in each subgraph of these subgraph can be the feature vector for machine learning approach. In fact, there are two recent works proposed in KDD 2017 \cite{lp2017} and NIPS 2018 \cite{lp2018} using this method. 
 	
 	\section{Future Work}
-	We will keep working on what we have proposed in our proposal. Since we have finished our evaluation framework, we can start implementing our machine learning models. And the final results will be included in our final report. 
+	We will keep working on what we have proposed in our proposal. Since we have finished our evaluation framework, we can start implementing our machine learning models. Furthermore, we are planning to modify this maching learning methods to let it be more suitable for our problem. For the factorization model, we want to adopt Bayesian Personal Ranking \cite{bpr} to Matrix Factorization because our goal is to improve our ranking not square error. For the sample subgraphs approach, we will try to modify the enumerating approach and try to make it better.
+	\\
+	\\
+	In addition, we find that the negative sampling in training will have a huge influence of our model. We will do more experiment on the influence of negative sampling and present in our final report.
+
 	
 	
 	
